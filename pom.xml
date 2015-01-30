@@ -55,6 +55,11 @@
             <version>${hive.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-jdbc</artifactId>
+            <version>${hive.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.calcite</groupId>
             <artifactId>calcite-core</artifactId>
             <version>0.9.2-incubating</version>
@@ -64,6 +69,7 @@
             <artifactId>calcite-avatica</artifactId>
             <version>0.9.2-incubating</version>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
