@@ -12,11 +12,14 @@
 * hadoop  部署
 
 ## mr编程
+
 ### mr 程序依赖程序包 groupID org.apache.hadoop
 * hadoop-common
 * hadoop-hdfs
 * hadoop-mapreduce-client-core
+
 ## hive 编程
+
 ### hiveUDF 程序依赖程序包 groupID org.apache.hive
 * hive-exec
 * hive-common
