@@ -33,3 +33,5 @@
 
   select decode('1CC7376126B8AE1DE343E4C20EAE9ADA') from tmp;
   select decode('5BB6A40B0CEA149B0A1645E74C7E460C','fkey','skey','tkey') from tmp;
+### hiveJdbc 使用
+  详细参考 com.sponge.srd.hive.HiveServer2Client
