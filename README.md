@@ -38,3 +38,14 @@
   select decode('5BB6A40B0CEA149B0A1645E74C7E460C','fkey','skey','tkey') from tmp;
 ### hiveJdbc 使用
   详细参考 com.sponge.srd.hive.HiveServer2Client
+## flume 编程
+### flume custom components
+    add pom.xml conf
+            <dependency>
+                <groupId>org.apache.flume</groupId>
+                <artifactId>flume-ng-sdk</artifactId>
+                <version>${flume.version}</version>
+            </dependency>
+    参考:http://flume.apache.org/FlumeDeveloperGuide.html
+    RPC client
+    开发sink与source需要添加flume-ng-core模块
