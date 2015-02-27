@@ -49,3 +49,10 @@
     参考:http://flume.apache.org/FlumeDeveloperGuide.html
     RPC client
     开发sink与source需要添加flume-ng-core模块
+## hbase 编程
+### hbase maven configuration
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-client</artifactId>
+            <version>${hbase.version}</version>
+        </dependency>
