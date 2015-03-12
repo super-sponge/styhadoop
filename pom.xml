@@ -15,6 +15,7 @@
         <hive.version>0.14.0</hive.version>
         <flume.version>1.5.2</flume.version>
         <hbase.version>0.98.10.1-hadoop2</hbase.version>
+        <avro.version>1.7.7</avro.version>
     </properties>
 
     <repositories>
@@ -89,6 +90,12 @@
             <version>${hbase.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.avro</groupId>
+            <artifactId>avro</artifactId>
+            <version>${avro.version}</version>
+        </dependency>
+
        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -113,6 +120,23 @@
                     <source>1.6</source>
                     <target>1.6</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro-maven-plugin</artifactId>
+                <version>${avro.version}</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>schema</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
+                            <outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

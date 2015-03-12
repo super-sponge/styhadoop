@@ -36,12 +36,14 @@ public class HBaseTest {
                 System.out.println(tableName + " is exist, delete ...");
             }
 
-            HTableDescriptor desc = new HTableDescriptor(tableName);
+            HTableDescriptor desc = new HTableDescriptor(TableName.valueOf(tableName));
             desc.addFamily(new HColumnDescriptor("column1"));
             desc.addFamily(new HColumnDescriptor("column2"));
             desc.addFamily(new HColumnDescriptor("column3"));
 
             hBaseAdmin.createTable(desc);
+
+            hBaseAdmin.close();
 
         } catch (MasterNotRunningException e) {
             e.printStackTrace();
@@ -57,7 +59,8 @@ public class HBaseTest {
         System.out.println("Start insert data ...");
         try {
 
-            HTableInterface table = HBaseUtils.getHConnection().getTable(tableName);
+            //HTableInterface table = HBaseUtils.getHConnection().getTable(tableName);
+            HTable table =new HTable(HBaseUtils.getConfiguration(), tableName);
             Put put = new Put(rowkey.getBytes());// 一个PUT代表一行数据，再NEW一个PUT表示第二行数据,每行一个唯一的ROWKEY，此处rowkey为put构造方法中传入的值
             put.add("column1".getBytes(), null, "aaa".getBytes());// 本行数据的第一列
             put.add("column2".getBytes(), null, "bbb".getBytes());// 本行数据的第三列
@@ -204,6 +207,16 @@ public class HBaseTest {
         for(Cell cell : cells) {
             System.out.println("column： " + new String(CellUtil.cloneFamily(cell))
                     + "    value: " + new String(CellUtil.cloneValue(cell)));
+        }
+    }
+
+    public  static void printRecoder(Result result)throws Exception{
+        for(Cell cell:result.rawCells()){
+            System.out.print("行健: "+new String(CellUtil.cloneRow(cell)));
+            System.out.print("列簇: "+new String(CellUtil.cloneFamily(cell)));
+            System.out.print(" 列: "+new String(CellUtil.cloneQualifier(cell)));
+            System.out.print(" 值: "+new String(CellUtil.cloneValue(cell)));
+            System.out.println("时间戳: "+cell.getTimestamp());
         }
     }
 
